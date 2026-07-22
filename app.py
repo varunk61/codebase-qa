@@ -7,14 +7,14 @@ API_URL = "http://localhost:8000"
 st.set_page_config(page_title="Codebase QA", page_icon="🔍", layout="centered")
 
 st.title("🔍 Codebase QA")
-st.caption("Ask any question about a GitHub repository — get answers with file:line citations.")
+st.caption("Ask any question about a GitHub repository - get answers with file:line citations.")
 
 if "repo_id"  not in st.session_state: st.session_state.repo_id  = None
 if "repo_url" not in st.session_state: st.session_state.repo_url = None
 if "history"  not in st.session_state: st.session_state.history  = []
 
 # ── Step 1: Index a repo ───────────────────────────────────────────────────────
-st.subheader("Step 1 — Point it at a GitHub repo")
+st.subheader("Step 1 - Point it at a GitHub repo")
 
 with st.form("index_form"):
     github_url = st.text_input(
@@ -65,7 +65,7 @@ if submitted and github_url:
 # ── Step 2: Ask questions ──────────────────────────────────────────────────────
 if st.session_state.repo_id:
     st.divider()
-    st.subheader("Step 2 — Ask questions about the repo")
+    st.subheader("Step 2 - Ask questions about the repo")
     st.caption(f"📦 `{st.session_state.repo_url}`")
 
     st.markdown("**Try asking:**")
