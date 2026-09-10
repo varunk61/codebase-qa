@@ -1,0 +1,37 @@
+# --- Phase 1: AST parsing + symbol graph ---
+tree-sitter>=0.25,<0.27
+tree-sitter-python>=0.25,<0.26
+tree-sitter-javascript>=0.25,<0.26
+tree-sitter-typescript>=0.23,<0.24
+GitPython>=3.1                     # required to clone GitHub repos from the UI; also needs a system `git` on PATH
+
+# --- Phase 2: hybrid retrieval + re-ranking ---
+rank-bm25>=0.2.2
+einops>=0.7                       # required by jina-embeddings-v2 remote code
+# jina-embeddings-v2-base-code ships custom modeling code that breaks on
+# transformers>=4.49 (find_pruneable_heads_and_indices was removed). Pin the
+# known-good pair:
+transformers==4.44.2
+sentence-transformers==3.0.1
+huggingface_hub<0.26
+chromadb>=0.4
+
+# --- Phase 3: local generation + UI ---
+requests>=2.31                     # Ollama REST client (no API keys)
+streamlit>=1.33
+pyvis>=0.3.2                        # 2D call-graph visualiser (physics freezes after stabilisation)
+# LLM runs on a local Ollama daemon. Recommended: `ollama pull qwen2.5-coder`
+# (falls back to llama3.2 / llama3.1). llama3.1 8B is slow on modest hardware.
+
+# --- Phase 4: benchmark harness (eval.py) ---
+langchain-text-splitters>=0.2      # only used to reproduce the OLD character RAG baseline
+
+# --- misc ---
+python-dotenv>=1.0
+
+# --- optional legacy FastAPI backend (main.py; app.py no longer needs it) ---
+fastapi>=0.110
+uvicorn>=0.29
+
+# --- Dev ---
+pytest>=8.0
