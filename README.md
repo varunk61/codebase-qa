@@ -249,9 +249,4 @@ Regenerate with `python eval.py` (writes `eval_data/benchmark_report.md`).
   `retriever.py` cover parsing, the graph, and retrieval. Nothing covers
   `app.py` or prompt construction in `querier.py`, and there's no CI.
 
----
-
-## Contributors
-
-- Varun Kumar Andigari
 
